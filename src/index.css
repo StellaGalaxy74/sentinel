@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-cyber-bg: #020408;
+  --color-cyber-card: rgba(15, 23, 42, 0.4);
+  --color-cyber-border: rgba(30, 41, 59, 0.5);
+  --color-cyber-primary: #00D1FF;
+  --color-cyber-accent: #00D1FF;
+  --color-neon-blue: #00D1FF;
+  --color-neon-red: #FF4D4D;
+  --color-neon-green: #10b981;
+}
+
+@layer base {
+  body {
+    @apply bg-[var(--color-cyber-bg)] text-slate-300 font-sans antialiased overflow-x-hidden selection:bg-neon-blue/30 selection:text-white;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-slate-900/40 backdrop-blur-md border border-slate-800/50 rounded-2xl shadow-none;
+  }
+  
+  .glass-panel-interactive {
+    @apply bg-slate-900/40 backdrop-blur-md border border-slate-800/50 rounded-2xl transition-colors duration-300 hover:border-neon-blue/50;
+  }
+
+  .neon-text-blue {
+    text-shadow: 0 0 10px rgba(0, 209, 255, 0.3), 0 0 20px rgba(0, 209, 255, 0.1);
+  }
+  
+  .neon-text-red {
+    text-shadow: 0 0 10px rgba(255, 77, 77, 0.3), 0 0 20px rgba(255, 77, 77, 0.1);
+  }
+
+  .cyber-grid {
+    background-image: 
+      linear-gradient(#1e293b 1px, transparent 1px),
+      linear-gradient(90deg, #1e293b 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-position: center center;
+  }
+  
+  .terminal-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .terminal-scrollbar::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+  }
+  
+  .terminal-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(0, 209, 255, 0.5);
+    border-radius: 3px;
+  }
+}
+
+/* Animations */
+@keyframes pulse-ring {
+  0% { transform: scale(0.8); opacity: 0.5; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+.animate-scanline {
+  animation: scanline 8s linear infinite;
+  background: linear-gradient(to bottom, transparent, rgba(14, 165, 233, 0.2), transparent);
+  height: 50px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 50;
+}

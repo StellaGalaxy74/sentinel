@@ -1,0 +1,6 @@
+{
+  "name": "SentinelAI SOC Platform",
+  "description": "Futuristic AI-powered Cybersecurity Incident Reporting System",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
